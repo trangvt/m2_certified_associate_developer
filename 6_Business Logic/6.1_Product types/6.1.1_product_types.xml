@@ -1,0 +1,95 @@
+<!-- 1 & 5 [START] module-catalog/etc/product_types.xml -->
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
+    <type name="simple" label="Simple Product" modelInstance="Magento\Catalog\Model\Product\Type\Simple" indexPriority="10" sortOrder="10">
+        <customAttributes>
+            <attribute name="refundable" value="true"/>
+        </customAttributes>
+    </type>
+    <type name="virtual" label="Virtual Product" modelInstance="Magento\Catalog\Model\Product\Type\Virtual" indexPriority="20" sortOrder="40">
+        <customAttributes>
+            <attribute name="is_real_product" value="false"/>
+            <attribute name="refundable" value="false"/>
+        </customAttributes>
+    </type>
+    <composableTypes>
+        <type name="simple" />
+        <type name="virtual" />
+    </composableTypes>
+</config>
+<!-- [END] module-catalog/etc/product_types.xml -->
+
+<!-- 2 [START Configurable] module-configurable-product/etc/product_types.xml -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
+    <type name="configurable" label="Configurable Product" modelInstance="Magento\ConfigurableProduct\Model\Product\Type\Configurable" composite='true' indexPriority="30" sortOrder="20">
+        <priceModel instance="Magento\ConfigurableProduct\Model\Product\Type\Configurable\Price" />
+        <indexerModel instance="Magento\ConfigurableProduct\Model\ResourceModel\Product\Indexer\Price\Configurable" />
+        <stockIndexerModel instance="Magento\ConfigurableProduct\Model\ResourceModel\Indexer\Stock\Configurable" />
+        <customAttributes>
+            <attribute name="refundable" value="true"/>
+        </customAttributes>
+    </type>
+</config>
+<!-- [END Configurable] module-configurable-product/etc/product_types.xml -->
+
+<!-- 3 [START Grouped] module-grouped-product/etc/product_types.xml -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
+    <type name="grouped" label="Grouped Product" modelInstance="Magento\GroupedProduct\Model\Product\Type\Grouped" composite='true' indexPriority="50" sortOrder="30">
+        <priceModel instance="Magento\GroupedProduct\Model\Product\Type\Grouped\Price" />
+        <indexerModel instance="Magento\GroupedProduct\Model\ResourceModel\Product\Indexer\Price\GroupedInterface" />
+        <stockIndexerModel instance="Magento\GroupedProduct\Model\ResourceModel\Indexer\Stock\Grouped" />
+        <customAttributes>
+            <attribute name="is_real_product" value="false"/>
+            <attribute name="refundable" value="true"/>
+            <attribute name="taxable" value="false"/>
+            <attribute name="is_product_set" value="true"/>
+        </customAttributes>
+    </type>
+</config>
+<!-- [END Grouped] module-grouped-product/etc/product_types.xml -->
+
+<!-- 4 [START Bundle] module-bundle/etc/product_types.xml -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
+    <type name="bundle" label="Bundle Product" modelInstance="Magento\Bundle\Model\Product\Type" composite='true' indexPriority="40" sortOrder="50">
+        <priceModel instance="Magento\Bundle\Model\Product\Price" />
+        <indexerModel instance="Magento\Bundle\Model\ResourceModel\Indexer\Price" />
+        <stockIndexerModel instance="Magento\Bundle\Model\ResourceModel\Indexer\Stock" />
+        <allowedSelectionTypes>
+            <type name="simple" />
+            <type name="virtual" />
+        </allowedSelectionTypes>
+        <customAttributes>
+            <attribute name="refundable" value="true"/>
+        </customAttributes>
+    </type>
+</config>
+<!-- [END Bundle] module-bundle/etc/product_types.xml -->
+
+<!-- [START Downloadable] module-downloadable/etc/product_types.xml -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
+    <type name="downloadable" label="Downloadable Product" modelInstance="Magento\Downloadable\Model\Product\Type" composite="false" isQty="true" canUseQtyDecimals="false" sortOrder="60">
+        <priceModel instance="Magento\Downloadable\Model\Product\Price" />
+        <indexerModel instance="Magento\Downloadable\Model\ResourceModel\Indexer\Price" />
+        <customAttributes>
+            <attribute name="refundable" value="false"/>
+            <attribute name="is_real_product" value="false"/>
+        </customAttributes>
+    </type>
+    <composableTypes>
+        <type name="downloadable" />
+    </composableTypes>
+</config>
+<!-- [END Downloadable] module-downloadable/etc/product_types.xml -->
+
+<!-- [START Gift Card] module-gift-card/etc/product_types.xml -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
+    <type name="giftcard" label="Gift Card" modelInstance="Magento\GiftCard\Model\Catalog\Product\Type\Giftcard" composite="false" indexPriority="45" isQty="true" sortOrder="70">
+        <priceModel instance="Magento\GiftCard\Model\Catalog\Product\Price\Giftcard" />
+        <indexerModel instance="Magento\GiftCard\Model\ResourceModel\Indexer\Price" />
+        <customAttributes>
+            <attribute name="refundable" value="false"/>
+            <attribute name="taxable" value="false"/>
+        </customAttributes>
+    </type>
+</config>
+<!-- [END Gift Card] module-gift-card/etc/product_types.xml -->
