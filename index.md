@@ -6,6 +6,8 @@ User guide
 
 ---------------------------------------------------------------------------------------
 # 1/ Magento Architecture and Customization Techniques
+	This section covers 33% of the exam.
+
 # 2/ Request Flow Processing
 # 3/ Customizing the Magento UI
 # 4/ Working with Databases in Magento
